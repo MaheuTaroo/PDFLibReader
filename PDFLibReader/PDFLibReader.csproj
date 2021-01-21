@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="itext7" Version="7.1.14" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\PDFLibData\PDFLibData.csproj" />
+  </ItemGroup>
+
+</Project>
