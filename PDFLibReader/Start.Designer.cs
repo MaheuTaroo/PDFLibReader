@@ -1,5 +1,4 @@
-﻿
-namespace PDFLibReader
+﻿namespace PDFLibReader
 {
     partial class Start
     {
@@ -56,7 +55,7 @@ namespace PDFLibReader
             this.tlbMain.RowCount = 2;
             this.tlbMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tlbMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tlbMain.Size = new System.Drawing.Size(427, 288);
+            this.tlbMain.Size = new System.Drawing.Size(420, 287);
             this.tlbMain.TabIndex = 0;
             // 
             // tlbLibs
@@ -67,11 +66,11 @@ namespace PDFLibReader
             this.tlbLibs.Controls.Add(this.panLibCreater, 1, 0);
             this.tlbLibs.Controls.Add(this.tableLayoutPanel1, 0, 0);
             this.tlbLibs.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tlbLibs.Location = new System.Drawing.Point(3, 147);
+            this.tlbLibs.Location = new System.Drawing.Point(3, 146);
             this.tlbLibs.Name = "tlbLibs";
             this.tlbLibs.RowCount = 1;
             this.tlbLibs.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tlbLibs.Size = new System.Drawing.Size(421, 138);
+            this.tlbLibs.Size = new System.Drawing.Size(414, 138);
             this.tlbLibs.TabIndex = 0;
             // 
             // panLibCreater
@@ -81,34 +80,39 @@ namespace PDFLibReader
             this.panLibCreater.Controls.Add(this.label3);
             this.panLibCreater.Controls.Add(this.btnOpen);
             this.panLibCreater.Controls.Add(this.label1);
-            this.panLibCreater.Location = new System.Drawing.Point(227, 11);
+            this.panLibCreater.Location = new System.Drawing.Point(235, 18);
             this.panLibCreater.Name = "panLibCreater";
-            this.panLibCreater.Size = new System.Drawing.Size(176, 116);
+            this.panLibCreater.Size = new System.Drawing.Size(151, 101);
             this.panLibCreater.TabIndex = 1;
             // 
             // btnCreate
             // 
-            this.btnCreate.Location = new System.Drawing.Point(51, 84);
+            this.btnCreate.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.btnCreate.Location = new System.Drawing.Point(74, 56);
             this.btnCreate.Name = "btnCreate";
-            this.btnCreate.Size = new System.Drawing.Size(75, 23);
+            this.btnCreate.Size = new System.Drawing.Size(64, 30);
             this.btnCreate.TabIndex = 3;
             this.btnCreate.Text = "Create";
             this.btnCreate.UseVisualStyleBackColor = true;
+            this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(32, 66);
+            this.label3.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label3.Location = new System.Drawing.Point(16, 58);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(116, 15);
+            this.label3.Size = new System.Drawing.Size(47, 26);
             this.label3.TabIndex = 2;
-            this.label3.Text = "Create a different list";
+            this.label3.Text = "Create a\r\nnew list";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // btnOpen
             // 
-            this.btnOpen.Location = new System.Drawing.Point(51, 27);
+            this.btnOpen.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.btnOpen.Location = new System.Drawing.Point(74, 14);
             this.btnOpen.Name = "btnOpen";
-            this.btnOpen.Size = new System.Drawing.Size(75, 23);
+            this.btnOpen.Size = new System.Drawing.Size(64, 31);
             this.btnOpen.TabIndex = 1;
             this.btnOpen.Text = "Open";
             this.btnOpen.UseVisualStyleBackColor = true;
@@ -117,11 +121,13 @@ namespace PDFLibReader
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(32, 9);
+            this.label1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label1.Location = new System.Drawing.Point(8, 16);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(111, 15);
+            this.label1.Size = new System.Drawing.Size(60, 26);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Open a different list";
+            this.label1.Text = "Open a\r\ndifferent list";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // tableLayoutPanel1
             // 
@@ -135,38 +141,40 @@ namespace PDFLibReader
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 80F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(204, 132);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(201, 132);
             this.tableLayoutPanel1.TabIndex = 2;
             // 
             // lbRecentLibs
             // 
             this.lbRecentLibs.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lbRecentLibs.FormattingEnabled = true;
-            this.lbRecentLibs.ItemHeight = 15;
             this.lbRecentLibs.Location = new System.Drawing.Point(3, 29);
             this.lbRecentLibs.Name = "lbRecentLibs";
-            this.lbRecentLibs.Size = new System.Drawing.Size(198, 100);
+            this.lbRecentLibs.Size = new System.Drawing.Size(195, 100);
             this.lbRecentLibs.TabIndex = 0;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label2.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.label2.Location = new System.Drawing.Point(3, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(198, 26);
+            this.label2.Size = new System.Drawing.Size(195, 26);
             this.label2.TabIndex = 1;
             this.label2.Text = "Recent lists";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // Start
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(427, 288);
+            this.ClientSize = new System.Drawing.Size(420, 287);
             this.Controls.Add(this.tlbMain);
+            this.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.MaximizeBox = false;
             this.Name = "Start";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Start";
             this.tlbMain.ResumeLayout(false);
             this.tlbLibs.ResumeLayout(false);
@@ -192,3 +200,4 @@ namespace PDFLibReader
         private System.Windows.Forms.Label label2;
     }
 }
+

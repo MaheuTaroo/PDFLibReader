@@ -1,11 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.30717.126
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.1231
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PDFLibReader", "PDFLibReader\PDFLibReader.csproj", "{0981A1FC-5584-4189-8744-07DF60B40302}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PDFLibReader", "PDFLibReader\PDFLibReader.csproj", "{5389EA03-7769-4AFB-B841-EC724C7C43F8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PDFLibData", "PDFLibData\PDFLibData.csproj", "{92B57E8A-E556-4217-8671-3929C047AE68}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PDFLibData", "PDFLibData\PDFLibData.csproj", "{CACD6B92-3502-4FFB-BDFC-D4E9971B274A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,19 +13,19 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{0981A1FC-5584-4189-8744-07DF60B40302}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0981A1FC-5584-4189-8744-07DF60B40302}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0981A1FC-5584-4189-8744-07DF60B40302}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0981A1FC-5584-4189-8744-07DF60B40302}.Release|Any CPU.Build.0 = Release|Any CPU
-		{92B57E8A-E556-4217-8671-3929C047AE68}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{92B57E8A-E556-4217-8671-3929C047AE68}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{92B57E8A-E556-4217-8671-3929C047AE68}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{92B57E8A-E556-4217-8671-3929C047AE68}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5389EA03-7769-4AFB-B841-EC724C7C43F8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5389EA03-7769-4AFB-B841-EC724C7C43F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5389EA03-7769-4AFB-B841-EC724C7C43F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5389EA03-7769-4AFB-B841-EC724C7C43F8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CACD6B92-3502-4FFB-BDFC-D4E9971B274A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CACD6B92-3502-4FFB-BDFC-D4E9971B274A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CACD6B92-3502-4FFB-BDFC-D4E9971B274A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CACD6B92-3502-4FFB-BDFC-D4E9971B274A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {5714EAE9-A8B9-48C7-A01E-1A2CF79092C7}
+		SolutionGuid = {6E1A9340-C59E-402F-A2C4-41C45D97DA47}
 	EndGlobalSection
 EndGlobal

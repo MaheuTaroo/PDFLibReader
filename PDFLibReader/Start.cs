@@ -1,15 +1,13 @@
 ﻿using System;
-using System.Windows.Forms;
 using System.IO;
 using PDFLibData;
+using System.Windows.Forms;
+
 namespace PDFLibReader
 {
     public partial class Start : Form
     {
-        public Start()
-        {
-            InitializeComponent();
-        }
+        public Start() => InitializeComponent();
         private void btnOpen_Click(object sender, EventArgs e)
         {
             OpenFileDialog ofd = new OpenFileDialog();
@@ -17,7 +15,7 @@ namespace PDFLibReader
             {
                 if (!ofd.FileName.EndsWith(".plrd"))
                 {
-                    PDFList.Files = new StreamReader(ofd.FileName).ReadToEnd().Split(Environment.NewLine);
+                    PDFList.Files = new StreamReader(ofd.FileName).ReadToEnd().Split(Environment.NewLine.ToCharArray());
                     string pdfs = "";
                     foreach (string pdf in PDFList.GetFiles())
                     {
@@ -28,6 +26,11 @@ namespace PDFLibReader
                 }
                 else MessageBox.Show("The provided file's extension is not supported by this application. please provide a file with the .plrd extension.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+        private void btnCreate_Click(object sender, EventArgs e)
+        {
+            new NewPDFLib().ShowDialog();
+            if (Program.read == true) Close();
         }
     }
 }

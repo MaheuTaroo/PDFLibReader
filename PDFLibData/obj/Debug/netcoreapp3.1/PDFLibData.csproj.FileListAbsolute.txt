@@ -1,9 +1,0 @@
-C:\Users\pantu\source\repos\PDFLibReader\PDFLibData\bin\Debug\netcoreapp3.1\PDFLibData.deps.json
-C:\Users\pantu\source\repos\PDFLibReader\PDFLibData\bin\Debug\netcoreapp3.1\PDFLibData.dll
-C:\Users\pantu\source\repos\PDFLibReader\PDFLibData\bin\Debug\netcoreapp3.1\PDFLibData.pdb
-C:\Users\pantu\source\repos\PDFLibReader\PDFLibData\obj\Debug\netcoreapp3.1\PDFLibData.csprojAssemblyReference.cache
-C:\Users\pantu\source\repos\PDFLibReader\PDFLibData\obj\Debug\netcoreapp3.1\PDFLibData.AssemblyInfoInputs.cache
-C:\Users\pantu\source\repos\PDFLibReader\PDFLibData\obj\Debug\netcoreapp3.1\PDFLibData.AssemblyInfo.cs
-C:\Users\pantu\source\repos\PDFLibReader\PDFLibData\obj\Debug\netcoreapp3.1\PDFLibData.csproj.CoreCompileInputs.cache
-C:\Users\pantu\source\repos\PDFLibReader\PDFLibData\obj\Debug\netcoreapp3.1\PDFLibData.dll
-C:\Users\pantu\source\repos\PDFLibReader\PDFLibData\obj\Debug\netcoreapp3.1\PDFLibData.pdb
