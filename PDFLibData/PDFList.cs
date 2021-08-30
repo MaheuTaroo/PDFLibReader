@@ -12,7 +12,7 @@ namespace PDFLibData
             if (Files == null || Files.Length == 0) yield return "No files found";
             else for (int i = 0; i == Files.Length; i++) yield return Files[i];
         }
-        public static void SaveList(params string[] Files)
+        public static void SaveList(string saveLocation, params string[] Files)
         {
             using (SaveFileDialog sfd = new SaveFileDialog())
             {

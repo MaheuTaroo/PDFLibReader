@@ -21,7 +21,12 @@ namespace PDFLibReader
         {
             foreach (Control c in Controls) c.Enabled = false;
             label2.Text = "Creating new library file...";
-            if (string.IsNullOrEmpty(saveLocation)) MessageBox.Show("No save location was specified. Please click the \"Save to...\" button to specify a location for the file library.");
+            if (string.IsNullOrEmpty(saveLocation))
+            {
+                MessageBox.Show("No save location was specified. Please click the \"Save to...\" button to specify a location for the file library.");
+                label2.Text = string.Empty;
+                foreach (Control c in Controls) c.Enabled = true;
+            }
             else
             {
                 using (XmlWriter xml = XmlWriter.Create(saveLocation, new XmlWriterSettings() { Indent = true, IndentChars = "\t", NewLineOnAttributes = true, NewLineChars = Environment.NewLine}))
