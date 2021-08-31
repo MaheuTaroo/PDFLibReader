@@ -30,7 +30,7 @@ namespace PDFLibReader
         private void btnCreate_Click(object sender, EventArgs e)
         {
             new NewPDFLib().ShowDialog();
-            if (Program.read == true) Close();
+            if (Program.read) Close();
         }
     }
 }

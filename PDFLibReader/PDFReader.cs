@@ -22,5 +22,15 @@ namespace PDFLibReader
             else current = PDFList.Files[Array.IndexOf(PDFList.Files, current) + 1];
             PdfReader reader = new PdfReader(current);
         }
+
+        private void btnNext_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

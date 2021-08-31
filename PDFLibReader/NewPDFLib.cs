@@ -8,6 +8,16 @@ namespace PDFLibReader
     {
         static string saveLocation;
         public NewPDFLib() => InitializeComponent();
+        public NewPDFLib(string[] files)
+        {
+            InitializeComponent();
+            if (files.Length == 0 || files == null) MessageBox.Show("No files were given; application will enter in library creaton mode.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            else
+            {
+                label1.Text = "Edit an existing PDF library";
+                Text = "Edit existing library";
+            }
+        }
         private void btnAddFile_Click(object sender, EventArgs e)
         {
             OpenFileDialog ofd = new OpenFileDialog()
@@ -23,24 +33,15 @@ namespace PDFLibReader
             label2.Text = "Creating new library file...";
             if (string.IsNullOrEmpty(saveLocation))
             {
-                MessageBox.Show("No save location was specified. Please click the \"Save to...\" button to specify a location for the file library.");
+                MessageBox.Show("No save location was specified. Please click the \"Save to...\" button to specify a location for the file library.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 label2.Text = string.Empty;
                 foreach (Control c in Controls) c.Enabled = true;
             }
             else
             {
-                using (XmlWriter xml = XmlWriter.Create(saveLocation, new XmlWriterSettings() { Indent = true, IndentChars = "\t", NewLineOnAttributes = true, NewLineChars = Environment.NewLine}))
-                {
-                    xml.WriteStartDocument();
-                    xml.WriteStartElement("files");
-                    foreach (string file in lbFiles.Items) xml.WriteElementString("path", file);
-                    xml.WriteEndElement();
-                    xml.WriteEndDocument();
-                    xml.Flush();
-                    xml.Close();
-                }
                 PDFList.Files = new string[lbFiles.Items.Count];
                 lbFiles.Items.CopyTo(PDFList.Files, 0);
+                PDFList.SaveListTo(saveLocation);
                 Program.read = true;
                 Close();
             }
@@ -51,8 +52,11 @@ namespace PDFLibReader
             {
                 Filter = "PDFLibReader file|*.plrd"
             };
-            if (sfd.ShowDialog() == DialogResult.OK) saveLocation = sfd.FileName;
-            lblSaved.Text = "Location validated!";
+            if (sfd.ShowDialog() == DialogResult.OK)
+            {
+                saveLocation = sfd.FileName;
+                lblSaved.Text = "Location validated!";
+            }
         }
     }
 }
