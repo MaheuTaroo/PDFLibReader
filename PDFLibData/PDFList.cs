@@ -23,6 +23,7 @@ namespace PDFLibData
                 xml.WriteStartElement("files");
                 foreach (string file in Files) xml.WriteElementString("path", file);
                 xml.WriteEndElement();
+                xml.WriteElementString("index", "0");
                 xml.WriteEndDocument();
                 xml.Flush();
             }

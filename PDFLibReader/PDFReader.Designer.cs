@@ -31,10 +31,10 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.btnNext = new System.Windows.Forms.Button();
-            this.btnPrevious = new System.Windows.Forms.Button();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.lblReaderProp = new System.Windows.Forms.Label();
             this.btnChangeLib = new System.Windows.Forms.Button();
+            this.btnPrevious = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -69,7 +69,7 @@
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(407, 69);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(408, 69);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
             // btnNext
@@ -77,22 +77,12 @@
             this.btnNext.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnNext.Location = new System.Drawing.Point(309, 3);
+            this.btnNext.Location = new System.Drawing.Point(310, 3);
             this.btnNext.Name = "btnNext";
             this.btnNext.Size = new System.Drawing.Size(95, 63);
             this.btnNext.TabIndex = 8;
             this.btnNext.Text = "Next";
             this.btnNext.UseVisualStyleBackColor = true;
-            // 
-            // btnPrevious
-            // 
-            this.btnPrevious.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnPrevious.Location = new System.Drawing.Point(3, 3);
-            this.btnPrevious.Name = "btnPrevious";
-            this.btnPrevious.Size = new System.Drawing.Size(94, 63);
-            this.btnPrevious.TabIndex = 9;
-            this.btnPrevious.Text = "Previous";
-            this.btnPrevious.UseVisualStyleBackColor = true;
             // 
             // tableLayoutPanel3
             // 
@@ -101,7 +91,7 @@
             this.tableLayoutPanel3.Controls.Add(this.lblReaderProp, 0, 0);
             this.tableLayoutPanel3.Controls.Add(this.btnChangeLib, 0, 1);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(103, 3);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(104, 3);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 2;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -113,11 +103,12 @@
             // 
             this.lblReaderProp.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblReaderProp.AutoSize = true;
-            this.lblReaderProp.Location = new System.Drawing.Point(65, 9);
+            this.lblReaderProp.Location = new System.Drawing.Point(36, 9);
             this.lblReaderProp.Name = "lblReaderProp";
-            this.lblReaderProp.Size = new System.Drawing.Size(69, 13);
+            this.lblReaderProp.Size = new System.Drawing.Size(127, 13);
             this.lblReaderProp.TabIndex = 11;
-            this.lblReaderProp.Text = "File {0} of {1}";
+            this.lblReaderProp.Text = "File {Index} of {FileCount}";
+            this.lblReaderProp.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // btnChangeLib
             // 
@@ -129,6 +120,16 @@
             this.btnChangeLib.Text = "Modify library";
             this.btnChangeLib.UseVisualStyleBackColor = true;
             // 
+            // btnPrevious
+            // 
+            this.btnPrevious.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnPrevious.Location = new System.Drawing.Point(3, 3);
+            this.btnPrevious.Name = "btnPrevious";
+            this.btnPrevious.Size = new System.Drawing.Size(95, 63);
+            this.btnPrevious.TabIndex = 9;
+            this.btnPrevious.Text = "Previous";
+            this.btnPrevious.UseVisualStyleBackColor = true;
+            // 
             // PDFReader
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -138,6 +139,7 @@
             this.Name = "PDFReader";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "PDF Reader";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.PDFReader_FormClosing);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.tableLayoutPanel2.ResumeLayout(false);
