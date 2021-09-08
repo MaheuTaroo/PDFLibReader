@@ -14,16 +14,36 @@ namespace PDFLibData
             if (Files == null || Files.Length == 0) yield return "No files found";
             else for (int i = 0; i == Files.Length; i++) yield return Files[i];
         }
+        public static bool ReadFrom(string libraryLocation)
+        {
+            try
+            {
+                using (FileStream fs = new FileStream(libraryLocation, FileMode.Open))
+                using (XmlReader xml = XmlReader.Create(fs))
+                {
+                    xml.MoveToContent();
+                }
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+            return true;
+        }
         public static void SaveListTo(string saveLocation)
         {
             using (FileStream fs = new FileStream(saveLocation, FileMode.OpenOrCreate))
             using (XmlWriter xml = XmlWriter.Create(fs, new XmlWriterSettings() { Indent = true, IndentChars = "\t", NewLineOnAttributes = true, NewLineChars = Environment.NewLine }))
             {
                 xml.WriteStartDocument();
+                xml.WriteStartElement("library");
                 xml.WriteStartElement("files");
                 foreach (string file in Files) xml.WriteElementString("path", file);
                 xml.WriteEndElement();
-                xml.WriteElementString("index", "0");
+                xml.WriteStartElement("index");
+                xml.WriteAttributeString("value", "0");
+                xml.WriteEndElement();
+                xml.WriteEndElement();
                 xml.WriteEndDocument();
                 xml.Flush();
             }

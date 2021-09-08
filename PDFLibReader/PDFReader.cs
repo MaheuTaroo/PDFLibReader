@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using PDFLibData;
-using iText.Kernel.Pdf;
+using PdfiumViewer;
 using System.IO;
 using System.Xml;
 namespace PDFLibReader
@@ -13,8 +13,13 @@ namespace PDFLibReader
         public PDFReader(string libraryLocation)
         {
             InitializeComponent();
+            if (PDFList.ReadFrom(libraryLocation) == false)
+            {
+                MessageBox.Show("No valid library file was passed, or file doesn't exist.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Close();
+            }
             lblReaderProp.Text = lblReaderProp.Text.Replace("{FileCount}", PDFList.Files.Length.ToString()).Replace("{Index}", index.ToString());
-            if (File.Exists(libraryLocation) || libraryLocation.EndsWith(".plrd"))
+            /*if (File.Exists(libraryLocation) || libraryLocation.EndsWith(".plrd"))
             {
                 using (FileStream fs = new FileStream(libraryLocation, FileMode.Open))
                 using (XmlReader xml = XmlReader.Create(fs))
@@ -31,7 +36,7 @@ namespace PDFLibReader
             {
                 MessageBox.Show("No valid library file was passed, or file doesn't exist.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Close();
-            }
+            }*/
         }
         private void btnNext_Click(object sender, EventArgs e)
         {
@@ -46,7 +51,7 @@ namespace PDFLibReader
                 current = PDFList.Files[Array.IndexOf(PDFList.Files, current) + 1];
                 index++;
             }
-            PdfReader reader = new PdfReader(current);
+            pdfViewer1.Document = PdfDocument.Load(current);
         }
         private void PDFReader_FormClosing(object sender, FormClosingEventArgs e)
         {

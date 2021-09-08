@@ -43,6 +43,7 @@ namespace PDFLibReader
                 lbFiles.Items.CopyTo(PDFList.Files, 0);
                 PDFList.SaveListTo(saveLocation);
                 Program.read = true;
+                Program.library = saveLocation;
                 Close();
             }
         }
