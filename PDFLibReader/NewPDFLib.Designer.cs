@@ -39,6 +39,9 @@
             this.label2 = new System.Windows.Forms.Label();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.btnMoveUp = new System.Windows.Forms.Button();
+            this.btnRemoveFile = new System.Windows.Forms.Button();
+            this.btnMoveDown = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -88,11 +91,11 @@
             // 
             // btnAddFile
             // 
-            this.btnAddFile.Location = new System.Drawing.Point(240, 87);
+            this.btnAddFile.Location = new System.Drawing.Point(238, 90);
             this.btnAddFile.Name = "btnAddFile";
-            this.btnAddFile.Size = new System.Drawing.Size(74, 35);
+            this.btnAddFile.Size = new System.Drawing.Size(75, 23);
             this.btnAddFile.TabIndex = 4;
-            this.btnAddFile.Text = "Add a new PDF file";
+            this.btnAddFile.Text = "Add file";
             this.btnAddFile.UseVisualStyleBackColor = true;
             this.btnAddFile.Click += new System.EventHandler(this.btnAddFile_Click);
             // 
@@ -113,7 +116,7 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.Controls.Add(this.btnSaveTo, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.lblSaved, 0, 1);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(223, 161);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(222, 196);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -164,13 +167,46 @@
             this.tableLayoutPanel3.Size = new System.Drawing.Size(320, 29);
             this.tableLayoutPanel3.TabIndex = 9;
             // 
+            // btnMoveUp
+            // 
+            this.btnMoveUp.Location = new System.Drawing.Point(265, 61);
+            this.btnMoveUp.Name = "btnMoveUp";
+            this.btnMoveUp.Size = new System.Drawing.Size(20, 23);
+            this.btnMoveUp.TabIndex = 10;
+            this.btnMoveUp.Text = "↑";
+            this.btnMoveUp.UseVisualStyleBackColor = true;
+            this.btnMoveUp.Click += new System.EventHandler(this.btnMoveUp_Click);
+            // 
+            // btnRemoveFile
+            // 
+            this.btnRemoveFile.Location = new System.Drawing.Point(238, 119);
+            this.btnRemoveFile.Name = "btnRemoveFile";
+            this.btnRemoveFile.Size = new System.Drawing.Size(75, 23);
+            this.btnRemoveFile.TabIndex = 11;
+            this.btnRemoveFile.Text = "Remove file";
+            this.btnRemoveFile.UseVisualStyleBackColor = true;
+            this.btnRemoveFile.Click += new System.EventHandler(this.btnRemoveFile_Click);
+            // 
+            // btnMoveDown
+            // 
+            this.btnMoveDown.Location = new System.Drawing.Point(265, 148);
+            this.btnMoveDown.Name = "btnMoveDown";
+            this.btnMoveDown.Size = new System.Drawing.Size(20, 23);
+            this.btnMoveDown.TabIndex = 12;
+            this.btnMoveDown.Text = "↓";
+            this.btnMoveDown.UseVisualStyleBackColor = true;
+            this.btnMoveDown.Click += new System.EventHandler(this.btnMoveDown_Click);
+            // 
             // NewPDFLib
             // 
             this.AcceptButton = this.btnCreate;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(341, 341);
+            this.ClientSize = new System.Drawing.Size(344, 341);
+            this.Controls.Add(this.btnMoveDown);
+            this.Controls.Add(this.btnRemoveFile);
+            this.Controls.Add(this.btnMoveUp);
             this.Controls.Add(this.tableLayoutPanel3);
             this.Controls.Add(this.tableLayoutPanel2);
             this.Controls.Add(this.tableLayoutPanel1);
@@ -209,5 +245,8 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
+        private System.Windows.Forms.Button btnMoveUp;
+        private System.Windows.Forms.Button btnRemoveFile;
+        private System.Windows.Forms.Button btnMoveDown;
     }
 }

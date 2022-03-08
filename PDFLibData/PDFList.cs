@@ -3,16 +3,15 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 using System.IO;
 using System.Xml;
-
 namespace PDFLibData
 {
     public static class PDFList
     {
-        public static string[] Files;
+        public static List<string> Files;
         public static IEnumerable<string> GetFiles()
         {
-            if (Files == null || Files.Length == 0) yield return "No files found";
-            else for (int i = 0; i == Files.Length; i++) yield return Files[i];
+            if (Files == null || Files.Count == 0) yield return "No files found";
+            else for (int i = 0; i < Files.Count; i++) yield return Files[i];
         }
         public static bool ReadFrom(string libraryLocation)
         {
@@ -22,6 +21,9 @@ namespace PDFLibData
                 using (XmlReader xml = XmlReader.Create(fs))
                 {
                     xml.MoveToContent();
+
+                    // TODO
+                    // Read from library
                 }
             }
             catch (Exception)
