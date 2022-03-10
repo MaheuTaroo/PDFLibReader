@@ -10,13 +10,14 @@ namespace PDFLibReader
     public partial class NewPDFLib : Form
     {
         static string saveLocation;
+        static bool editing = false;
         public NewPDFLib() => InitializeComponent();
         public NewPDFLib(List<string> files, bool edit)
         {
             InitializeComponent();
-            if (files.Count == 0 || files == null) MessageBox.Show("No files were given; application will enter in library creaton mode.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            else
+            if (!(files.Count == 0 || files == null))
             {
+                editing = edit;
                 if (edit)
                 {
                     label1.Text = "Edit an existing PDF library";
@@ -37,7 +38,7 @@ namespace PDFLibReader
             {
                 Multiselect = true,
                 Filter = "PDF files|*.pdf",
-                InitialDirectory = "C:\\Users\\%USERNAME%\\Desktop",
+                InitialDirectory = "%HOMEPATH%\\Desktop",
                 RestoreDirectory = true
             };
             if (ofd.ShowDialog() == DialogResult.OK)
@@ -48,14 +49,19 @@ namespace PDFLibReader
                     if (lbFiles.Items.Contains(file)) repeatedFiles++;
                     else lbFiles.Items.Add(file);
                 }
-                if (repeatedFiles == ofd.FileNames.Length) MessageBox.Show("All submitted files have been submitted before; the list has not been altered.", "No files added", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                else if (repeatedFiles < ofd.FileNames.Length) MessageBox.Show($"{repeatedFiles} of the {ofd.FileNames.Length} files have been submitted before, so they have not been added to the list.", "Repeated files found", MessageBoxButtons.OK, MessageBoxIcon.Warning); ;
+                if (repeatedFiles > 0)
+                {
+                    if (repeatedFiles == ofd.FileNames.Length) MessageBox.Show("All submitted files have been submitted before; the list has not been altered.", "No files added", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    else if (repeatedFiles < ofd.FileNames.Length) MessageBox.Show($"{repeatedFiles} of the {ofd.FileNames.Length} files have been submitted before, so they have not been added to the list.", "Repeated files found", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
             }
         }
         private void btnCreate_Click(object sender, EventArgs e)
         {
             foreach (Control c in Controls) c.Enabled = false;
             label2.Text = "Creating new library file...";
+            // Checks for empty content selection and library file location
+            if (lbFiles.Items.Count == 0) MessageBox.Show("No files have been submitted for library fle creation. Please submit at least one PDF file, or select a .plrd file to read its contents to the new file.", "No files selected", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             if (string.IsNullOrEmpty(saveLocation))
             {
                 MessageBox.Show("No save location was specified. Please click the \"Save to...\" button to specify a location for the file library.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -66,7 +72,7 @@ namespace PDFLibReader
             {
                 PDFList.Files = new List<string>();
                 foreach (object file in lbFiles.Items) PDFList.Files.Add(file.ToString());
-                PDFList.SaveListTo(saveLocation);
+                PDFList.SaveListTo(saveLocation, editing);
                 Program.read = true;
                 Program.library = saveLocation;
                 Close();
@@ -82,7 +88,7 @@ namespace PDFLibReader
             };
             if (sfd.ShowDialog() == DialogResult.OK)
             {
-                // If user submits a file, 
+                // If user submits a file, record its name and location and validate location
                 saveLocation = sfd.FileName;
                 lblSaved.Text = "Location validated!";
             }

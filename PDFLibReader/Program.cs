@@ -35,47 +35,49 @@ namespace PDFLibReader
                 if (read) Application.Run(new PDFReader(library));
             }
             else if (args.Length == 1)*/
-            switch (args.Length)
+            while(true)
             {
-                case 0:
-                    Application.Run(new Start());
-                    break;
+                switch (args.Length)
+                {
+                    case 0:
+                        Application.Run(new Start());
+                        break;
 
-                case 1:
-                    if (args[0].ToLower().EndsWith(".plrd") || args[0].ToLower().EndsWith(".pdf")) Application.Run(new PDFReader(args[0], args[0].EndsWith(".plrd")));
-                    else MessageBox.Show("The given file is neither a PDFLibReader library nor a PDF file. Please give a file with the .plrd or .pdf extension, so PDFLibReader can process correctly the file and enter reading mode.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); ;
-                    break;
+                    case 1:
+                        if (args[0].ToLower().EndsWith(".plrd") || args[0].ToLower().EndsWith(".pdf")) Application.Run(new PDFReader(args[0], args[0].EndsWith(".plrd")));
+                        else MessageBox.Show("The given file is neither a PDFLibReader library nor a PDF file. Please give a file with the .plrd or .pdf extension, so PDFLibReader can process correctly the file and enter reading mode.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); ;
+                        break;
 
-                default:
-                    PDFList.Files = new List<string>();
-                    foreach (string file in args)
-                    {
-                        //PDFList.Files.Add(file);
-                        // TODO
-                        // Continue pdf + plrd support
-                        switch (file.Substring(file.LastIndexOf('.')).ToLower()) 
-						{
-							case ".pdf":
-                                PDFList.Files.Add(file);
-								break;
-							
-							case ".plrd":
-								using (XmlReader reader = XmlReader.Create(file))
-								{
-									while (reader.Read()) if (reader.Name == "path") PDFList.Files.Add(reader.ReadElementContentAsString());
-								}
-								break;
-							
-							default:
-								MessageBox.Show("At least one of the given files does not correspond to a PDF file or a PDFLibReader library. Please make sure all the files' extensions are \".pdf\" or \".plrd\"", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-								Application.Exit();
-								break;
-						}
-                    }
-                    Application.Run(new NewPDFLib(PDFList.Files, false));
-                    break;
+                    default:
+                        PDFList.Files = new List<string>();
+                        foreach (string file in args)
+                        {
+                            //PDFList.Files.Add(file);
+                            // TODO
+                            // Continue pdf + plrd support
+                            switch (file.Substring(file.LastIndexOf('.')).ToLower())
+                            {
+                                case ".pdf":
+                                    PDFList.Files.Add(file);
+                                    break;
+
+                                case ".plrd":
+                                    using (XmlReader reader = XmlReader.Create(file)) while (reader.Read()) if (reader.Name == "path") PDFList.Files.Add(reader.ReadElementContentAsString());
+                                    break;
+
+                                default:
+                                    MessageBox.Show("At least one of the given files does not correspond to a PDF file or a PDFLibReader library. Please make sure all the files' extensions are \".pdf\" or \".plrd\"", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    Application.Exit();
+                                    break;
+                            }
+                        }
+                        Application.Run(new NewPDFLib(PDFList.Files, false));
+                        break;
+                }
+                if (read) Application.Run(PDFList.Files != null ? new PDFReader() : new PDFReader(library, true));
+                else break;
+                args = new string[0];
             }
-			if (read) Application.Run(new PDFReader(library, true));
         }
     }
 }

@@ -19,12 +19,9 @@ namespace PDFLibData
             {
                 using (FileStream fs = new FileStream(libraryLocation, FileMode.Open))
                 using (XmlReader xml = XmlReader.Create(fs))
-                {
-                    xml.MoveToContent();
-
-                    // TODO
-                    // Read from library
-                }
+                    while (xml.Read())
+                        if (xml.Name == "path")
+                            Files.Add(xml.ReadElementContentAsString());
             }
             catch (Exception)
             {
@@ -32,11 +29,16 @@ namespace PDFLibData
             }
             return true;
         }
-        public static void SaveListTo(string saveLocation)
+        public static void SaveListTo(string saveLocation, bool edit)
         {
             using (FileStream fs = new FileStream(saveLocation, FileMode.OpenOrCreate))
             using (XmlWriter xml = XmlWriter.Create(fs, new XmlWriterSettings() { Indent = true, IndentChars = "\t", NewLineOnAttributes = true, NewLineChars = Environment.NewLine }))
             {
+                if (edit)
+                {
+                    fs.SetLength(0);
+                    fs.Flush();
+                }
                 xml.WriteStartDocument();
                 xml.WriteStartElement("library");
                 xml.WriteStartElement("files");
