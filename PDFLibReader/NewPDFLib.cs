@@ -38,8 +38,7 @@ namespace PDFLibReader
             {
                 Multiselect = true,
                 Filter = "PDF files|*.pdf",
-                InitialDirectory = "%HOMEPATH%\\Desktop",
-                RestoreDirectory = true
+                InitialDirectory = "%HOMEPATH%\\Desktop"
             };
             if (ofd.ShowDialog() == DialogResult.OK)
             {

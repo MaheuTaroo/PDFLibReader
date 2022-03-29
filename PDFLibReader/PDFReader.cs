@@ -9,12 +9,11 @@ namespace PDFLibReader
     public partial class PDFReader : Form
     {
         public static string current = "";
-        public static int index = 0;
         public PDFReader()
         {
             InitializeComponent();
-            lblReaderProp.Text = lblReaderProp.Text.Replace("{FileCount}", PDFList.Files.Count.ToString()).Replace("{Index}", (index + 1).ToString());
-            current = PDFList.Files[index];
+            lblReaderProp.Text = lblReaderProp.Text.Replace("{FileCount}", PDFList.Files.Count.ToString()).Replace("{Index}", (PDFList.index + 1).ToString());
+            current = PDFList.Files[PDFList.index];
             pdfViewer1.Document = PdfDocument.Load(current);
             pdfViewer1.Update();
         }
@@ -25,7 +24,9 @@ namespace PDFLibReader
                 MessageBox.Show("No valid library file was passed, or file doesn't exist.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Close();
             }
-            current = PDFList.Files[index];
+            InitializeComponent();
+            lblReaderProp.Text = lblReaderProp.Text.Replace("{FileCount}", PDFList.Files.Count.ToString()).Replace("{Index}", (PDFList.index + 1).ToString());
+            current = PDFList.Files[PDFList.index];
             pdfViewer1.Document = PdfDocument.Load(current);
             pdfViewer1.Update();
         }
@@ -37,31 +38,31 @@ namespace PDFLibReader
                 {
                     MessageBox.Show("Arrived to last document, navigating to the 1st one.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     current = PDFList.Files[0];
-                    index = 0;
+                    PDFList.index = 0;
                 }
                 else
                 {
                     current = PDFList.Files[PDFList.Files.IndexOf(current) + 1];
-                    index++;
+                    PDFList.index++;
                 }
             }
             else
             {
                 if (PDFList.Files.IndexOf(current) == 0)
                 {
-                    MessageBox.Show("Arrived to 1sr document, navigating to the last one.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Arrived to 1st document, navigating to the last one.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     current = PDFList.Files[PDFList.Files.Count - 1];
-                    index = PDFList.Files.Count - 1;
+                    PDFList.index = PDFList.Files.Count - 1;
                 }
                 else
                 {
                     current = PDFList.Files[PDFList.Files.IndexOf(current) - 1];
-                    index--;
+                    PDFList.index--;
                 }
             }
             pdfViewer1.Document = PdfDocument.Load(current);
             pdfViewer1.Update();
-            lblReaderProp.Text = $"File {index + 1} of {PDFList.Files.Count}";
+            lblReaderProp.Text = $"File {PDFList.index + 1} of {PDFList.Files.Count}";
         }
         private void PDFReader_FormClosing(object sender, FormClosingEventArgs e) => Program.read = false;
     }

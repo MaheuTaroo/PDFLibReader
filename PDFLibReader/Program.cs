@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using System.IO;
 using System.Windows.Forms;
 using System.Xml;
 using PDFLibData;
@@ -10,7 +9,10 @@ namespace PDFLibReader
     static class Program
     {
         public static bool read = false;
-        public static string library = "";
+        public static string library = "", path = Environment.ExpandEnvironmentVariables(@"%APPDATA%\..\Local\PDFLibReader\FileHist");
+        public static Stack<string> history = new Stack<string>(0), newHistory = new Stack<string>(0);
+        // TODO
+        // Better implementation of file history
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
@@ -19,23 +21,18 @@ namespace PDFLibReader
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            /*if (args.Length == 0)
+            if (File.Exists(path))
             {
-                Application.Run(new Start());
-                if (read) Application.Run(new PDFReader(library, true));
+                Stack<string> temp = new Stack<string>();
+                using (FileStream fileStream = new FileStream(path, FileMode.Open))
+                using (StreamReader reader = new StreamReader(fileStream))
+                    foreach (string s in reader.ReadToEnd().Split(new string[1] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries))
+                        temp.Push(s);
+                while (temp.Count != 0)
+                    history.Push(temp.Pop());
             }
-            else if (!args[0].EndsWith(".plrd")) MessageBox.Show("The given file is not a PDFLibReader library. Please give a file with the .plrd extension, so PDFLibReader can process correctly the file and enter reading mode", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            else Application.Run(new PDFReader(args[0]));*/
 
-            // TODO: Add .pdf support
-
-            /*if (args.Length == 0)
-            {
-                Application.Run(new Start());
-                if (read) Application.Run(new PDFReader(library));
-            }
-            else if (args.Length == 1)*/
-            while(true)
+            while (true)
             {
                 switch (args.Length)
                 {
@@ -62,7 +59,10 @@ namespace PDFLibReader
                                     break;
 
                                 case ".plrd":
-                                    using (XmlReader reader = XmlReader.Create(file)) while (reader.Read()) if (reader.Name == "path") PDFList.Files.Add(reader.ReadElementContentAsString());
+                                    using (XmlReader reader = XmlReader.Create(file)) 
+                                        while (reader.Read())
+                                            if (reader.Name == "path") 
+                                                PDFList.Files.Add(reader.ReadElementContentAsString());
                                     break;
 
                                 default:
@@ -78,6 +78,9 @@ namespace PDFLibReader
                 else break;
                 args = new string[0];
             }
+            if (newHistory.Count != 0)
+                using (StreamWriter writer = new StreamWriter(path, true))
+                    writer.Write(newHistory.ToArray().Join());
         }
     }
 }

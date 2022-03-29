@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 using System.IO;
 using System.Xml;
+
 namespace PDFLibData
 {
     public static class PDFList
     {
         public static List<string> Files;
+        public static int index = 0;
         public static IEnumerable<string> GetFiles()
         {
             if (Files == null || Files.Count == 0) yield return "No files found";
@@ -20,8 +22,13 @@ namespace PDFLibData
                 using (FileStream fs = new FileStream(libraryLocation, FileMode.Open))
                 using (XmlReader xml = XmlReader.Create(fs))
                     while (xml.Read())
+                    {
+                        if (Files == null) Files = new List<string>();
                         if (xml.Name == "path")
                             Files.Add(xml.ReadElementContentAsString());
+                        else if (xml.Name == "index")
+                            index = xml.ReadElementContentAsInt();
+                    }
             }
             catch (Exception)
             {
@@ -45,12 +52,34 @@ namespace PDFLibData
                 foreach (string file in Files) xml.WriteElementString("path", file);
                 xml.WriteEndElement();
                 xml.WriteStartElement("index");
-                xml.WriteAttributeString("value", "0");
+                xml.WriteAttributeString("value", index.ToString());
                 xml.WriteEndElement();
                 xml.WriteEndElement();
                 xml.WriteEndDocument();
                 xml.Flush();
             }
+        }
+    }
+    public static class Utils
+    {
+        public static string Join(this string[] array)
+        {
+            string result = string.Empty;
+            for (int i = 0; i < array.Length; i++)
+                result += array[i] + (i == array.Length - 1 ? "" : Environment.NewLine);
+            return result;
+        }
+        public static string[] ProcessForHistoryBox(this string[] array)
+        {
+            List<string> temp = new List<string>();
+            string manip = string.Empty;
+            foreach (string s in array)
+                if (File.Exists(s))
+                {
+                    manip = s.Substring(s.LastIndexOf('\\') + 1) + " (" + s.Substring(0, s.LastIndexOf("\\")) + ')';
+                    temp.Add(manip);
+                }
+            return temp.ToArray();
         }
     }
 }
