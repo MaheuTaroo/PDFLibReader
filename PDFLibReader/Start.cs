@@ -13,13 +13,7 @@ namespace PDFLibReader
         {
             InitializeComponent();
             if (Program.history.Count != 0)
-            {
-                /*using (FileStream file = new FileStream(Program.path, FileMode.Open))
-                using (StreamReader reader = new StreamReader(file))
-                    lbFileHist.Items.AddRange(reader.ReadToEnd().Split(new string[1] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries));*/
-
                 lbFileHist.Items.AddRange(Program.history.ToArray().ProcessForHistoryBox());
-            }
         }
         private void btnOpen_Click(object sender, EventArgs e)
         {
@@ -30,28 +24,18 @@ namespace PDFLibReader
                 switch (ofd.FileName.Substring(ofd.FileName.LastIndexOf('.')))
                 {
                     case ".plrd":
-                        //PDFList.Files = new List<string>();
-                        //using (XmlReader reader = XmlReader.Create(ofd.FileName))
-                        //    while (reader.Read())
-                        //        if (reader.Name == "path")
-                        //            PDFList.Files.Add(reader.ReadElementContentAsString());
-                        if (PDFList.ReadFrom(ofd.FileName))
-                        {
-                            string pdfs = "";
-                            foreach (string pdf in PDFList.GetFiles()) pdfs += pdf + Environment.NewLine;
-                            Program.read = true;
-                        }
+                        if (Program.read = PDFList.ReadFrom(ofd.FileName))
+                            Program.library = ofd.FileName;
                         else
-                        {
-                            MessageBox.Show("There was an error processing the given file. ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            Program.read = false;
-                        }
+                            MessageBox.Show("There was an error processing the given file.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         Close();
                         break;
 
                     case ".pdf":
-                        PDFList.Files = new List<string>();
-                        PDFList.Files.Add("");
+                        PDFList.Files.Clear();
+                        PDFList.Files.Add(ofd.FileName);
+                        Program.read = true;
+                        Close();
                         break;
 
                     default:
@@ -66,12 +50,12 @@ namespace PDFLibReader
             {
                 using (OpenFileDialog ofd = new OpenFileDialog()
                 {
-                    Multiselect = true,
-                    Filter = "PDF files|*.pdf",
+                    Multiselect = false,
+                    Filter = "PDFLibReader library|*.plrd",
                     InitialDirectory = Environment.ExpandEnvironmentVariables("%HOMEPATH%\\Desktop")
                 })
                     if (ofd.ShowDialog() == DialogResult.OK)
-                        new NewPDFLib(ofd.FileNames.ToList(), true).ShowDialog();
+                        new NewPDFLib(PDFList.ReadLib(ofd.FileName, out _)).ShowDialog();
             }
             else new NewPDFLib().ShowDialog();
             if (Program.read) Close();

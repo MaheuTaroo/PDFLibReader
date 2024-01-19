@@ -41,12 +41,11 @@ namespace PDFLibReader
                         break;
 
                     case 1:
-                        if (args[0].ToLower().EndsWith(".plrd") || args[0].ToLower().EndsWith(".pdf")) Application.Run(new PDFReader(args[0], args[0].EndsWith(".plrd")));
+                        if (args[0].ToLower().EndsWith(".plrd") || args[0].ToLower().EndsWith(".pdf")) Application.Run(new PDFReader(args[0]));
                         else MessageBox.Show("The given file is neither a PDFLibReader library nor a PDF file. Please give a file with the .plrd or .pdf extension, so PDFLibReader can process correctly the file and enter reading mode.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); ;
                         break;
 
                     default:
-                        PDFList.Files = new List<string>();
                         foreach (string file in args)
                         {
                             //PDFList.Files.Add(file);
@@ -71,10 +70,10 @@ namespace PDFLibReader
                                     break;
                             }
                         }
-                        Application.Run(new NewPDFLib(PDFList.Files, false));
+                        Application.Run(new NewPDFLib(PDFList.Files));
                         break;
                 }
-                if (read) Application.Run(PDFList.Files != null ? new PDFReader() : new PDFReader(library, true));
+                if (read) Application.Run(PDFList.Files != null ? new PDFReader() : new PDFReader(library));
                 else break;
                 args = new string[0];
             }

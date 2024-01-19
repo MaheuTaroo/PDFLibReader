@@ -2,8 +2,6 @@
 using System.Windows.Forms;
 using PDFLibData;
 using PdfiumViewer;
-using System.IO;
-using System.Xml;
 namespace PDFLibReader
 {
     public partial class PDFReader : Form
@@ -14,10 +12,10 @@ namespace PDFLibReader
             InitializeComponent();
             lblReaderProp.Text = lblReaderProp.Text.Replace("{FileCount}", PDFList.Files.Count.ToString()).Replace("{Index}", (PDFList.index + 1).ToString());
             current = PDFList.Files[PDFList.index];
-            pdfViewer1.Document = PdfDocument.Load(current);
-            pdfViewer1.Update();
+            pdfRenderer1.Load(PdfDocument.Load(current));
+            pdfRenderer1.Update();
         }
-        public PDFReader(string fileLocation, bool isLibrary)
+        public PDFReader(string fileLocation)
         {
             if (!PDFList.ReadFrom(fileLocation))
             {
@@ -27,8 +25,8 @@ namespace PDFLibReader
             InitializeComponent();
             lblReaderProp.Text = lblReaderProp.Text.Replace("{FileCount}", PDFList.Files.Count.ToString()).Replace("{Index}", (PDFList.index + 1).ToString());
             current = PDFList.Files[PDFList.index];
-            pdfViewer1.Document = PdfDocument.Load(current);
-            pdfViewer1.Update();
+            pdfRenderer1.Load(PdfDocument.Load(current));
+            pdfRenderer1.Update();
         }
         private void NavigateDocuments(object sender, EventArgs e)
         {
@@ -60,8 +58,8 @@ namespace PDFLibReader
                     PDFList.index--;
                 }
             }
-            pdfViewer1.Document = PdfDocument.Load(current);
-            pdfViewer1.Update();
+            pdfRenderer1.Load(PdfDocument.Load(current));
+            pdfRenderer1.Update();
             lblReaderProp.Text = $"File {PDFList.index + 1} of {PDFList.Files.Count}";
         }
         private void PDFReader_FormClosing(object sender, FormClosingEventArgs e) => Program.read = false;

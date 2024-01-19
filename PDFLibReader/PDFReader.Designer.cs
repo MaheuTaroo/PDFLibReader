@@ -30,10 +30,10 @@
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.lblReaderProp = new System.Windows.Forms.Label();
             this.btnNext = new System.Windows.Forms.Button();
             this.btnPrevious = new System.Windows.Forms.Button();
-            this.pdfViewer1 = new PdfiumViewer.PdfViewer();
-            this.lblReaderProp = new System.Windows.Forms.Label();
+            this.pdfRenderer1 = new PdfiumViewer.PdfRenderer();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.SuspendLayout();
@@ -43,7 +43,7 @@
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.pdfViewer1, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.pdfRenderer1, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -68,15 +68,26 @@
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(624, 72);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(625, 72);
             this.tableLayoutPanel2.TabIndex = 0;
+            // 
+            // lblReaderProp
+            // 
+            this.lblReaderProp.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lblReaderProp.AutoSize = true;
+            this.lblReaderProp.Location = new System.Drawing.Point(249, 29);
+            this.lblReaderProp.Name = "lblReaderProp";
+            this.lblReaderProp.Size = new System.Drawing.Size(127, 13);
+            this.lblReaderProp.TabIndex = 12;
+            this.lblReaderProp.Text = "File {Index} of {FileCount}";
+            this.lblReaderProp.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // btnNext
             // 
             this.btnNext.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnNext.Location = new System.Drawing.Point(381, 3);
+            this.btnNext.Location = new System.Drawing.Point(382, 3);
             this.btnNext.Name = "btnNext";
             this.btnNext.Size = new System.Drawing.Size(240, 66);
             this.btnNext.TabIndex = 8;
@@ -89,34 +100,23 @@
             this.btnPrevious.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnPrevious.Location = new System.Drawing.Point(3, 3);
             this.btnPrevious.Name = "btnPrevious";
-            this.btnPrevious.Size = new System.Drawing.Size(239, 66);
+            this.btnPrevious.Size = new System.Drawing.Size(240, 66);
             this.btnPrevious.TabIndex = 9;
             this.btnPrevious.Text = "Previous";
             this.btnPrevious.UseVisualStyleBackColor = true;
             this.btnPrevious.Click += new System.EventHandler(this.NavigateDocuments);
             // 
-            // pdfViewer1
+            // pdfRenderer1
             // 
-            this.pdfViewer1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.pdfViewer1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.pdfViewer1.DefaultDocumentName = "PDFLibDocument";
-            this.pdfViewer1.Location = new System.Drawing.Point(3, 3);
-            this.pdfViewer1.Name = "pdfViewer1";
-            this.pdfViewer1.Size = new System.Drawing.Size(624, 432);
-            this.pdfViewer1.TabIndex = 1;
-            // 
-            // lblReaderProp
-            // 
-            this.lblReaderProp.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.lblReaderProp.AutoSize = true;
-            this.lblReaderProp.Location = new System.Drawing.Point(248, 29);
-            this.lblReaderProp.Name = "lblReaderProp";
-            this.lblReaderProp.Size = new System.Drawing.Size(127, 13);
-            this.lblReaderProp.TabIndex = 12;
-            this.lblReaderProp.Text = "File {Index} of {FileCount}";
-            this.lblReaderProp.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.pdfRenderer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pdfRenderer1.Location = new System.Drawing.Point(3, 3);
+            this.pdfRenderer1.Name = "pdfRenderer1";
+            this.pdfRenderer1.Page = 0;
+            this.pdfRenderer1.Rotation = PdfiumViewer.PdfRotation.Rotate0;
+            this.pdfRenderer1.Size = new System.Drawing.Size(625, 432);
+            this.pdfRenderer1.TabIndex = 1;
+            this.pdfRenderer1.Text = "pdfRenderer1";
+            this.pdfRenderer1.ZoomMode = PdfiumViewer.PdfViewerZoomMode.FitHeight;
             // 
             // PDFReader
             // 
@@ -142,7 +142,7 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.Button btnNext;
         private System.Windows.Forms.Button btnPrevious;
-        private PdfiumViewer.PdfViewer pdfViewer1;
         private System.Windows.Forms.Label lblReaderProp;
+        private PdfiumViewer.PdfRenderer pdfRenderer1;
     }
 }

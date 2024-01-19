@@ -10,19 +10,14 @@ namespace PDFLibReader
     public partial class NewPDFLib : Form
     {
         static string saveLocation;
-        static bool editing = false;
         public NewPDFLib() => InitializeComponent();
-        public NewPDFLib(List<string> files, bool edit)
+        public NewPDFLib(List<string> files)
         {
             InitializeComponent();
             if (!(files.Count == 0 || files == null))
             {
-                editing = edit;
-                if (edit)
-                {
-                    label1.Text = "Edit an existing PDF library";
-                    Text = "Edit existing library";
-                }
+                label1.Text = "Edit an existing PDF library";
+                Text = "Edit existing library";
                 int count = 0;
                 foreach (string file in files)
                 {
@@ -69,9 +64,8 @@ namespace PDFLibReader
             }
             else
             {
-                PDFList.Files = new List<string>();
                 foreach (object file in lbFiles.Items) PDFList.Files.Add(file.ToString());
-                PDFList.SaveListTo(saveLocation, editing);
+                PDFList.SaveListTo(saveLocation);
                 Program.read = true;
                 Program.library = saveLocation;
                 Close();

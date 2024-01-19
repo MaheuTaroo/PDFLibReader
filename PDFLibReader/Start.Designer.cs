@@ -70,11 +70,11 @@
             this.tlbLibs.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 38.86719F));
             this.tlbLibs.Controls.Add(this.tableLayoutPanel1, 1, 0);
             this.tlbLibs.Controls.Add(this.tableLayoutPanel2, 0, 0);
-            this.tlbLibs.Location = new System.Drawing.Point(3, 179);
+            this.tlbLibs.Location = new System.Drawing.Point(3, 180);
             this.tlbLibs.Name = "tlbLibs";
             this.tlbLibs.RowCount = 1;
             this.tlbLibs.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tlbLibs.Size = new System.Drawing.Size(512, 174);
+            this.tlbLibs.Size = new System.Drawing.Size(512, 173);
             this.tlbLibs.TabIndex = 0;
             // 
             // tableLayoutPanel1
@@ -97,14 +97,14 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(194, 168);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(194, 167);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // label1
             // 
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 15);
+            this.label1.Location = new System.Drawing.Point(6, 14);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(58, 26);
             this.label1.TabIndex = 0;
@@ -115,7 +115,7 @@
             // 
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(7, 71);
+            this.label2.Location = new System.Drawing.Point(7, 69);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(57, 26);
             this.label2.TabIndex = 1;
@@ -126,11 +126,11 @@
             // 
             this.label3.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(14, 120);
+            this.label3.Location = new System.Drawing.Point(14, 119);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(43, 39);
+            this.label3.Size = new System.Drawing.Size(42, 39);
             this.label3.TabIndex = 2;
-            this.label3.Text = "Edit an\r\nexistent library";
+            this.label3.Text = "Edit an\r\nexisting library";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // btnOpen
@@ -138,7 +138,7 @@
             this.btnOpen.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnOpen.Location = new System.Drawing.Point(74, 3);
             this.btnOpen.Name = "btnOpen";
-            this.btnOpen.Size = new System.Drawing.Size(117, 50);
+            this.btnOpen.Size = new System.Drawing.Size(117, 49);
             this.btnOpen.TabIndex = 3;
             this.btnOpen.Text = "Open";
             this.btnOpen.UseVisualStyleBackColor = true;
@@ -147,9 +147,9 @@
             // btnCreate
             // 
             this.btnCreate.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnCreate.Location = new System.Drawing.Point(74, 59);
+            this.btnCreate.Location = new System.Drawing.Point(74, 58);
             this.btnCreate.Name = "btnCreate";
-            this.btnCreate.Size = new System.Drawing.Size(117, 50);
+            this.btnCreate.Size = new System.Drawing.Size(117, 49);
             this.btnCreate.TabIndex = 4;
             this.btnCreate.Text = "Create";
             this.btnCreate.UseVisualStyleBackColor = true;
@@ -158,9 +158,9 @@
             // btnEdit
             // 
             this.btnEdit.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnEdit.Location = new System.Drawing.Point(74, 115);
+            this.btnEdit.Location = new System.Drawing.Point(74, 113);
             this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(117, 50);
+            this.btnEdit.Size = new System.Drawing.Size(117, 51);
             this.btnEdit.TabIndex = 5;
             this.btnEdit.Text = "Edit";
             this.btnEdit.UseVisualStyleBackColor = true;
@@ -180,7 +180,7 @@
             this.tableLayoutPanel2.RowCount = 2;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.88095F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 85.11905F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(306, 168);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(306, 167);
             this.tableLayoutPanel2.TabIndex = 1;
             // 
             // lbFileHist
@@ -190,7 +190,7 @@
             this.lbFileHist.HorizontalScrollbar = true;
             this.lbFileHist.Location = new System.Drawing.Point(3, 27);
             this.lbFileHist.Name = "lbFileHist";
-            this.lbFileHist.Size = new System.Drawing.Size(300, 138);
+            this.lbFileHist.Size = new System.Drawing.Size(300, 137);
             this.lbFileHist.TabIndex = 0;
             this.lbFileHist.MouseClick += new System.Windows.Forms.MouseEventHandler(this.lbFileHist_MouseClick);
             // 

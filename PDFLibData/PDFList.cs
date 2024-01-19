@@ -3,45 +3,74 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 using System.IO;
 using System.Xml;
+using System.Linq;
 
 namespace PDFLibData
 {
     public static class PDFList
     {
-        public static List<string> Files;
+        private static List<string> _files;
+        public static List<string> Files {  
+            get
+            {
+                if (_files == null) _files = new List<string>();
+                return _files;
+            }
+            private set
+            {
+                _files = value;
+            }
+        }
         public static int index = 0;
         public static IEnumerable<string> GetFiles()
         {
             if (Files == null || Files.Count == 0) yield return "No files found";
             else for (int i = 0; i < Files.Count; i++) yield return Files[i];
         }
-        public static bool ReadFrom(string libraryLocation)
+        public static List<string> ReadLib(string libraryLocation, out int index)
         {
             try
             {
                 using (FileStream fs = new FileStream(libraryLocation, FileMode.Open))
                 using (XmlReader xml = XmlReader.Create(fs))
+                {
+                    int idx = 0;
+                    List<string> files = new List<string>();
+                    if (!File.Exists(libraryLocation))
+                    {
+                        index = 0;
+                        return null;
+                    }
                     while (xml.Read())
                     {
-                        if (Files == null) Files = new List<string>();
                         if (xml.Name == "path")
-                            Files.Add(xml.ReadElementContentAsString());
+                            files.Add(xml.ReadElementContentAsString());
                         else if (xml.Name == "index")
-                            index = xml.ReadElementContentAsInt();
+                            int.TryParse(xml.GetAttribute("value"), out idx);
                     }
+                    index = idx;
+                    return files;
+                }
             }
             catch (Exception)
             {
-                return false;
+                index = 0;
+                return null;
             }
-            return true;
         }
-        public static void SaveListTo(string saveLocation, bool edit)
+
+        public static bool ReadFrom(string libraryLocation)
+        {
+            Files = ReadLib(libraryLocation, out index);
+            return Files != null;
+        }
+
+        public static void SaveListTo(string saveLocation)
         {
             using (FileStream fs = new FileStream(saveLocation, FileMode.OpenOrCreate))
             using (XmlWriter xml = XmlWriter.Create(fs, new XmlWriterSettings() { Indent = true, IndentChars = "\t", NewLineOnAttributes = true, NewLineChars = Environment.NewLine }))
             {
-                if (edit)
+                if (fs.Length > 0)
                 {
                     fs.SetLength(0);
                     fs.Flush();
@@ -62,17 +91,12 @@ namespace PDFLibData
     }
     public static class Utils
     {
-        public static string Join(this string[] array)
-        {
-            string result = string.Empty;
-            for (int i = 0; i < array.Length; i++)
-                result += array[i] + (i == array.Length - 1 ? "" : Environment.NewLine);
-            return result;
-        }
+        public static string Join(this string[] array) => array.Aggregate((accum, s) => accum += "\n" + s.Trim());
+        
         public static string[] ProcessForHistoryBox(this string[] array)
         {
             List<string> temp = new List<string>();
-            string manip = string.Empty;
+            string manip;
             foreach (string s in array)
                 if (File.Exists(s))
                 {
