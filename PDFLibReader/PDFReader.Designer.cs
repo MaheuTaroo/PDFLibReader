@@ -69,7 +69,7 @@
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(625, 72);
-            this.tableLayoutPanel2.TabIndex = 0;
+            this.tableLayoutPanel2.TabIndex = 1;
             // 
             // lblReaderProp
             // 
@@ -78,7 +78,7 @@
             this.lblReaderProp.Location = new System.Drawing.Point(249, 29);
             this.lblReaderProp.Name = "lblReaderProp";
             this.lblReaderProp.Size = new System.Drawing.Size(127, 13);
-            this.lblReaderProp.TabIndex = 12;
+            this.lblReaderProp.TabIndex = 2;
             this.lblReaderProp.Text = "File {Index} of {FileCount}";
             this.lblReaderProp.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -90,7 +90,7 @@
             this.btnNext.Location = new System.Drawing.Point(382, 3);
             this.btnNext.Name = "btnNext";
             this.btnNext.Size = new System.Drawing.Size(240, 66);
-            this.btnNext.TabIndex = 8;
+            this.btnNext.TabIndex = 1;
             this.btnNext.Text = "Next";
             this.btnNext.UseVisualStyleBackColor = true;
             this.btnNext.Click += new System.EventHandler(this.NavigateDocuments);
@@ -101,7 +101,7 @@
             this.btnPrevious.Location = new System.Drawing.Point(3, 3);
             this.btnPrevious.Name = "btnPrevious";
             this.btnPrevious.Size = new System.Drawing.Size(240, 66);
-            this.btnPrevious.TabIndex = 9;
+            this.btnPrevious.TabIndex = 0;
             this.btnPrevious.Text = "Previous";
             this.btnPrevious.UseVisualStyleBackColor = true;
             this.btnPrevious.Click += new System.EventHandler(this.NavigateDocuments);
@@ -114,7 +114,7 @@
             this.pdfRenderer1.Page = 0;
             this.pdfRenderer1.Rotation = PdfiumViewer.PdfRotation.Rotate0;
             this.pdfRenderer1.Size = new System.Drawing.Size(625, 432);
-            this.pdfRenderer1.TabIndex = 1;
+            this.pdfRenderer1.TabIndex = 0;
             this.pdfRenderer1.Text = "pdfRenderer1";
             this.pdfRenderer1.ZoomMode = PdfiumViewer.PdfViewerZoomMode.FitHeight;
             // 
