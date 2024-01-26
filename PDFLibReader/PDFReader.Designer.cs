@@ -75,11 +75,11 @@
             // 
             this.lblReaderProp.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblReaderProp.AutoSize = true;
-            this.lblReaderProp.Location = new System.Drawing.Point(249, 29);
+            this.lblReaderProp.Location = new System.Drawing.Point(273, 29);
             this.lblReaderProp.Name = "lblReaderProp";
-            this.lblReaderProp.Size = new System.Drawing.Size(127, 13);
+            this.lblReaderProp.Size = new System.Drawing.Size(79, 13);
             this.lblReaderProp.TabIndex = 2;
-            this.lblReaderProp.Text = "File {Index} of {FileCount}";
+            this.lblReaderProp.Text = "File %idx of %fc";
             this.lblReaderProp.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // btnNext
@@ -87,9 +87,9 @@
             this.btnNext.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnNext.Location = new System.Drawing.Point(382, 3);
+            this.btnNext.Location = new System.Drawing.Point(358, 3);
             this.btnNext.Name = "btnNext";
-            this.btnNext.Size = new System.Drawing.Size(240, 66);
+            this.btnNext.Size = new System.Drawing.Size(264, 66);
             this.btnNext.TabIndex = 1;
             this.btnNext.Text = "Next";
             this.btnNext.UseVisualStyleBackColor = true;
@@ -100,7 +100,7 @@
             this.btnPrevious.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnPrevious.Location = new System.Drawing.Point(3, 3);
             this.btnPrevious.Name = "btnPrevious";
-            this.btnPrevious.Size = new System.Drawing.Size(240, 66);
+            this.btnPrevious.Size = new System.Drawing.Size(264, 66);
             this.btnPrevious.TabIndex = 0;
             this.btnPrevious.Text = "Previous";
             this.btnPrevious.UseVisualStyleBackColor = true;

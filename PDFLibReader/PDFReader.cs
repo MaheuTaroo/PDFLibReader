@@ -12,7 +12,8 @@ namespace PDFLibReader
         public PDFReader()
         {
             InitializeComponent();
-            lblReaderProp.Text = lblReaderProp.Text.Replace("{FileCount}", PDFList.Files.Count.ToString()).Replace("{Index}", (PDFList.index + 1).ToString());
+            lblReaderProp.Text = lblReaderProp.Text.Replace("%fc", PDFList.Files.Count.ToString())
+                                                   .Replace("%idx", (PDFList.index + 1).ToString());
             current = PDFList.Files[PDFList.index];
             pdfRenderer1.Load(PdfDocument.Load(current));
             pdfRenderer1.Update();
@@ -27,7 +28,8 @@ namespace PDFLibReader
                 Close();
             }
             InitializeComponent();
-            lblReaderProp.Text = lblReaderProp.Text.Replace("{FileCount}", PDFList.Files.Count.ToString()).Replace("{Index}", (PDFList.index + 1).ToString());
+            lblReaderProp.Text = lblReaderProp.Text.Replace("%fc", PDFList.Files.Count.ToString())
+                                                   .Replace("%idx", (PDFList.index + 1).ToString());
             current = PDFList.Files[PDFList.index];
             pdfRenderer1.Load(PdfDocument.Load(current));
             pdfRenderer1.Update();
