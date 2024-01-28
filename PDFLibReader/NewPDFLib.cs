@@ -2,7 +2,6 @@
 using System.Windows.Forms;
 using System.Xml;
 using System.IO;
-using PDFLibData;
 using System.Collections.Generic;
 
 namespace PDFLibReader

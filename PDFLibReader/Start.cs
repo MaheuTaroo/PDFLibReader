@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Linq;
-using System.Collections.Generic;
 using System.Windows.Forms;
-using System.Xml;
-using System.IO;
-using PDFLibData;
+
 namespace PDFLibReader
 {
     public partial class Start : Form
@@ -17,14 +13,13 @@ namespace PDFLibReader
         }
         private void btnOpen_Click(object sender, EventArgs e)
         {
-            Console.WriteLine($"{MessageBoxIcon.Error}\r\n{MessageBoxButtons.OK}\r\n{MessageBoxIcon.Asterisk}");
             OpenFileDialog ofd = new OpenFileDialog();
             if (ofd.ShowDialog() != DialogResult.Cancel && !string.IsNullOrEmpty(ofd.FileName))
             {
                 switch (ofd.FileName.Substring(ofd.FileName.LastIndexOf('.')))
                 {
                     case ".plrd":
-                        if (Program.read = PDFList.ReadFrom(ofd.FileName))
+                        if (Program.read = PDFList.NewList(ofd.FileName))
                             Program.library = ofd.FileName;
                         else
                             MessageBox.Show("There was an error processing the given file.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);

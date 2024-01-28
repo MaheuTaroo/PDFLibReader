@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Windows.Forms;
 using System.IO;
 using System.Xml;
 using System.Linq;
 
-namespace PDFLibData
+namespace PDFLibReader
 {
     public static class PDFList
     {
@@ -59,9 +58,10 @@ namespace PDFLibData
             }
         }
 
-        public static bool ReadFrom(string libraryLocation)
+        public static bool NewList(string libraryLocation)
         {
-            Files = ReadLib(libraryLocation, out index);
+            Files = libraryLocation.EndsWith(".plrd") ? ReadLib(libraryLocation, out index)
+                                                      : new List<string>() { libraryLocation } ;
             return Files != null;
         }
 

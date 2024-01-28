@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Windows.Forms;
-using PDFLibData;
 using PdfiumViewer;
 namespace PDFLibReader
 {
@@ -22,12 +21,13 @@ namespace PDFLibReader
         public PDFReader(string fileLocation)
         {
             lib = fileLocation;
-            if (!PDFList.ReadFrom(fileLocation))
+            if (!PDFList.NewList(fileLocation))
             {
                 MessageBox.Show("No valid library file was passed, or file doesn't exist.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Close();
             }
             InitializeComponent();
+            if (fileLocation.EndsWith(".pdf")) PDFList.NewList(fileLocation);
             lblReaderProp.Text = lblReaderProp.Text.Replace("%fc", PDFList.Files.Count.ToString())
                                                    .Replace("%idx", (PDFList.index + 1).ToString());
             current = PDFList.Files[PDFList.index];
@@ -58,7 +58,7 @@ namespace PDFLibReader
 
         private void PDFReader_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (lib != string.Empty) PDFList.SaveListTo(lib);
+            if (lib.EndsWith(".plrd")) PDFList.SaveListTo(lib);
             Program.read = false;
         }
     }
