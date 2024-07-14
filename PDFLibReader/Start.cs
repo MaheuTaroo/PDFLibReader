@@ -9,7 +9,7 @@ namespace PDFLibReader
         {
             InitializeComponent();
             if (Program.history.Count != 0)
-                lbFileHist.Items.AddRange(Program.history.ToArray().ProcessForHistoryBox());
+                lbFileHist.Items.AddRange(Program.history.ProcessForHistoryBox());
         }
         private void btnOpen_Click(object sender, EventArgs e)
         {

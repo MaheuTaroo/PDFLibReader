@@ -8,6 +8,8 @@ namespace PDFLibReader
 {
     public static class PDFList
     {
+        public static string Title { get; set; } = string.Empty;
+
         private static List<string> _files;
         public static List<string> Files {  
             get
@@ -76,6 +78,7 @@ namespace PDFLibReader
                     fs.Flush();
                 }
                 xml.WriteStartDocument();
+                xml.WriteElementString("title", Title.IsEmpty() ? "New PDF Library" : Title);
                 xml.WriteStartElement("library");
                 xml.WriteStartElement("files");
                 foreach (string file in Files) xml.WriteElementString("path", file);
@@ -91,19 +94,13 @@ namespace PDFLibReader
     }
     public static class Utils
     {
-        public static string Join(this string[] array) => array.Aggregate((accum, s) => accum += "\n" + s.Trim());
-        
-        public static string[] ProcessForHistoryBox(this string[] array)
-        {
-            List<string> temp = new List<string>();
-            string manip;
-            foreach (string s in array)
-                if (File.Exists(s))
-                {
-                    manip = s.Substring(s.LastIndexOf('\\') + 1) + " (" + s.Substring(0, s.LastIndexOf("\\")) + ')';
-                    temp.Add(manip);
-                }
-            return temp.ToArray();
-        }
+        public static bool IsEmpty(this string s) => s.Equals(string.Empty);
+
+        public static string Join(this Stack<string> stack) => stack.Aggregate((accum, s) => accum += "\n" + s.Trim());
+
+        public static string[] ProcessForHistoryBox(this Stack<string> stack) => 
+            stack.Where(File.Exists)
+                 .Select(s => $"{s.Substring(s.LastIndexOf('\\') + 1)} ({s.Substring(0, s.LastIndexOf('\\'))})")
+                 .ToArray();
     }
 }

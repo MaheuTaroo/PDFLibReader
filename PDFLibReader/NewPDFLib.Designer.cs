@@ -42,6 +42,8 @@
             this.btnMoveUp = new System.Windows.Forms.Button();
             this.btnRemoveFile = new System.Windows.Forms.Button();
             this.btnMoveDown = new System.Windows.Forms.Button();
+            this.txtTitle = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -84,14 +86,14 @@
             // 
             this.lbFiles.FormattingEnabled = true;
             this.lbFiles.HorizontalScrollbar = true;
-            this.lbFiles.Location = new System.Drawing.Point(12, 37);
+            this.lbFiles.Location = new System.Drawing.Point(12, 66);
             this.lbFiles.Name = "lbFiles";
-            this.lbFiles.Size = new System.Drawing.Size(202, 238);
+            this.lbFiles.Size = new System.Drawing.Size(202, 212);
             this.lbFiles.TabIndex = 3;
             // 
             // btnAddFile
             // 
-            this.btnAddFile.Location = new System.Drawing.Point(238, 90);
+            this.btnAddFile.Location = new System.Drawing.Point(238, 103);
             this.btnAddFile.Name = "btnAddFile";
             this.btnAddFile.Size = new System.Drawing.Size(75, 23);
             this.btnAddFile.TabIndex = 4;
@@ -116,7 +118,7 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.Controls.Add(this.btnSaveTo, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.lblSaved, 0, 1);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(222, 196);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(222, 209);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -169,7 +171,7 @@
             // 
             // btnMoveUp
             // 
-            this.btnMoveUp.Location = new System.Drawing.Point(265, 61);
+            this.btnMoveUp.Location = new System.Drawing.Point(265, 74);
             this.btnMoveUp.Name = "btnMoveUp";
             this.btnMoveUp.Size = new System.Drawing.Size(20, 23);
             this.btnMoveUp.TabIndex = 10;
@@ -179,7 +181,7 @@
             // 
             // btnRemoveFile
             // 
-            this.btnRemoveFile.Location = new System.Drawing.Point(238, 119);
+            this.btnRemoveFile.Location = new System.Drawing.Point(238, 132);
             this.btnRemoveFile.Name = "btnRemoveFile";
             this.btnRemoveFile.Size = new System.Drawing.Size(75, 23);
             this.btnRemoveFile.TabIndex = 11;
@@ -189,13 +191,29 @@
             // 
             // btnMoveDown
             // 
-            this.btnMoveDown.Location = new System.Drawing.Point(265, 148);
+            this.btnMoveDown.Location = new System.Drawing.Point(265, 161);
             this.btnMoveDown.Name = "btnMoveDown";
             this.btnMoveDown.Size = new System.Drawing.Size(20, 23);
             this.btnMoveDown.TabIndex = 12;
             this.btnMoveDown.Text = "↓";
             this.btnMoveDown.UseVisualStyleBackColor = true;
             this.btnMoveDown.Click += new System.EventHandler(this.btnMoveDown_Click);
+            // 
+            // txtTitle
+            // 
+            this.txtTitle.Location = new System.Drawing.Point(92, 40);
+            this.txtTitle.Name = "txtTitle";
+            this.txtTitle.Size = new System.Drawing.Size(184, 20);
+            this.txtTitle.TabIndex = 13;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(56, 43);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(30, 13);
+            this.label3.TabIndex = 14;
+            this.label3.Text = "Title:";
             // 
             // NewPDFLib
             // 
@@ -204,6 +222,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
             this.ClientSize = new System.Drawing.Size(344, 341);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.txtTitle);
             this.Controls.Add(this.btnMoveDown);
             this.Controls.Add(this.btnRemoveFile);
             this.Controls.Add(this.btnMoveUp);
@@ -229,6 +249,7 @@
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel3.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -248,5 +269,7 @@
         private System.Windows.Forms.Button btnMoveUp;
         private System.Windows.Forms.Button btnRemoveFile;
         private System.Windows.Forms.Button btnMoveDown;
+        private System.Windows.Forms.TextBox txtTitle;
+        private System.Windows.Forms.Label label3;
     }
 }

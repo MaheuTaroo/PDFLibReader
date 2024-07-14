@@ -77,8 +77,8 @@ namespace PDFLibReader
                 args = new string[0];
             }
             if (newHistory.Count != 0)
-                using (StreamWriter writer = new StreamWriter(path, true))
-                    writer.Write(newHistory.ToArray().Join());
+                using (StreamWriter writer = new StreamWriter(path, false))
+                    writer.Write(newHistory.Join());
         }
     }
 }
